@@ -125,15 +125,15 @@ void merge_sort(int* A, int left, int right) {
 }
 
 // Selection Sort
-void selection_sort(int* A, int n) {
+void selection_sort(int* A, int n) {                        
     for(int i = 0; i < n; i++) {
-        int k = i;
+        int k = i;                                          // k = i (k = 1 (when i = 1))
         for(int j = i; j < n; j++) {
-            if(A[j] < A[k]) {
-                k = j;
+            if(A[j] < A[k]) {                               // If A[j] < A[k]
+                k = j;                                      // Then k will move to j position
             } 
-        }
-        swap(A[i], A[k]);
+        }                                                   // "j" will find any element smaller than i/k
+        swap(A[i], A[k]);                                   // Swap the A[i] and A[k], smallerst elemnts will be at the beginning of the array
     }
 }
 
