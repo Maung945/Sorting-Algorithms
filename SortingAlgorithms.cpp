@@ -58,14 +58,14 @@ void count_sort(int*A, int n) {
 // Quick Sort
 int partition(int* A, int left, int right, int pivot){
     while(left<= right) {
-        while (A[left] < pivot) {
+        while (A[left] < pivot) {           // If A[left] < pivot, keep moving to the right
             left++;
         }
-        while (A[right] > pivot) {
-            right--;
+        while (A[right] > pivot) {          // If A[right] > pivot, keep moving to the left
+            right--;    
         }
-        if(left <= right) {
-            swap(A[left], A[right]);
+        if(left <= right) {                 // If above condition weren't met, 
+            swap(A[left], A[right]);        // swawp the 'two' elemnts
             left++;
             right--;
         }
@@ -74,12 +74,12 @@ int partition(int* A, int left, int right, int pivot){
 }
 
 void quick_sort(int*A, int left, int right) {
-    if(left >= right) {
+    if(left >= right) {                     // Base case, the recursion will stop when it arrives to 'base case'
         return;
     }
-    int pivot = A[(left + right) / 2];
+    int pivot = A[(left + right) / 2];      // Find pivot & find the partition index.
     int partitionIndex = partition(A, left, right, pivot);
-    quick_sort(A, left, partitionIndex-1);
+    quick_sort(A, left, partitionIndex-1);  
     quick_sort(A, partitionIndex, right);
 }
 
