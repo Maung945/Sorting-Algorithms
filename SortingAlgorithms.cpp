@@ -23,7 +23,7 @@ void shell_sort(int*A, int n) {
 }
 
 // Count Sort
-int findMax(int*A, int n) {             // Find "largest number" in the array
+int findMax(int*A, int n) {                             // Find "largest number" in the array
     int max = -3213423;
     for(int i = 0; i < n; i++) {
         if(A[i] > max) {
@@ -35,21 +35,21 @@ int findMax(int*A, int n) {             // Find "largest number" in the array
 
 void count_sort(int*A, int n) {
     int max = findMax(A, n);
-    int *temp = new int[max+1];         // Create 'temp' array to accomodate all elements up to 'max'
-    for(int i = 0; i < max  + 1; i++) { // Set all elements into '0'
+    int *temp = new int[max+1];                         // Create 'temp' array to accomodate all elements up to 'max'
+    for(int i = 0; i < max  + 1; i++) {                 // Set all elements into '0'
         temp[i] = 0;
     }
-    for(int i = 0; i < n; i++) {        // For example A[i] = 5 --> temp[5] = 1; again if A[i] = 5 --> temp[i] = 2
+    for(int i = 0; i < n; i++) {                        // For example A[i] = 5 --> temp[5] = 1; again if A[i] = 5 --> temp[i] = 2
         temp[A[i]] = temp[A[i]] + 1;
     }
     int i = 0; int j = 0;
-    while(j <= max  + 1) {              // "j" will run up to 'max + 1'
+    while(j <= max  + 1) {                               // "j" will run up to 'max + 1'
         if(temp[j] > 0) {               
-            A[i] = j;                   // if "j" is at index 3 and "i" is at index 1, A[1] = 3, A[n] = {3, ......}
-            temp[j] = temp[j] - 1;      // Iterate until "j == 0"
-            i++;                        // "i" keeps incrementing
+            A[i] = j;                                    // if "j" is at index 3 and "i" is at index 1, A[1] = 3, A[n] = {3, ......}
+            temp[j] = temp[j] - 1;                       // Iterate until "j == 0"
+            i++;                                         // "i" keeps incrementing
         }
-        else {                          // if temp[j] == 0 -> j++
+        else {                                           // if temp[j] == 0 -> j++
             j++;
         }
     }
@@ -58,14 +58,14 @@ void count_sort(int*A, int n) {
 // Quick Sort
 int partition(int* A, int left, int right, int pivot){
     while(left<= right) {
-        while (A[left] < pivot) {           // If A[left] < pivot, keep moving to the right
+        while (A[left] < pivot) {                         // If A[left] < pivot, keep moving to the right
             left++;
         }
-        while (A[right] > pivot) {          // If A[right] > pivot, keep moving to the left
+        while (A[right] > pivot) {                         // If A[right] > pivot, keep moving to the left
             right--;    
         }
-        if(left <= right) {                 // If above condition weren't met, 
-            swap(A[left], A[right]);        // swawp the 'two' elemnts
+        if(left <= right) {                                // If above condition weren't met, 
+            swap(A[left], A[right]);                       // swawp the 'two' elemnts
             left++;
             right--;
         }
@@ -74,10 +74,10 @@ int partition(int* A, int left, int right, int pivot){
 }
 
 void quick_sort(int*A, int left, int right) {
-    if(left >= right) {                     // Base case, the recursion will stop when it arrives to 'base case'
+    if(left >= right) {                                     // Base case, the recursion will stop when it arrives to 'base case'
         return;
     }
-    int pivot = A[(left + right) / 2];      // Find pivot & find the partition index.
+    int pivot = A[(left + right) / 2];                      // Find pivot & find the partition index.
     int partitionIndex = partition(A, left, right, pivot);
     quick_sort(A, left, partitionIndex-1);  
     quick_sort(A, partitionIndex, right);
