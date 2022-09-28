@@ -7,6 +7,7 @@
 
 using namespace std;
 
+// Shell Sort
 void shell_sort(int*A, int n) {
     for(int gap = n/2; gap >= 1; gap /= 2) {
         for(int i = gap; i < n; i++) {
@@ -21,6 +22,7 @@ void shell_sort(int*A, int n) {
     }
 }
 
+// Count Sort
 int findMax(int*A, int n) {
     int max = -3213423;
     for(int i = 0; i < n; i++) {
@@ -53,6 +55,7 @@ void count_sort(int*A, int n) {
     }
 }
 
+// Quick Sort
 int partition(int* A, int left, int right, int pivot){
     while(left<= right) {
         while (A[left] < pivot) {
@@ -80,6 +83,7 @@ void quick_sort(int*A, int left, int right) {
     quick_sort(A, partitionIndex, right);
 }
 
+// Merge Sort
 void merge(int* A, int left, int right, int mid) {
     int *temp = new int[right + 1];
     int i = left;
@@ -120,6 +124,7 @@ void merge_sort(int* A, int left, int right) {
     }
 }
 
+// Selection Sort
 void selection_sort(int* A, int n) {
     for(int i = 0; i < n; i++) {
         int k = i;
@@ -132,6 +137,7 @@ void selection_sort(int* A, int n) {
     }
 }
 
+// Insertion Sort
 void insertion_sort(int* A, int n) {
     for(int i = 0; i < n; i++) {
         int key = A[i];
@@ -144,6 +150,7 @@ void insertion_sort(int* A, int n) {
     }
 }
 
+// Bubble Sort
 void bubble_sort(int* A, int n) {
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < n-1; j++) {
@@ -153,6 +160,8 @@ void bubble_sort(int* A, int n) {
         }
     }
 }
+
+// Display Function
 void display(int* A, int n) {
     cout << "Sorted Array: { ";
     for(int i = 0; i < n; i++) {
@@ -164,6 +173,7 @@ void display(int* A, int n) {
     cout << " }" << endl;
 }
 
+// Main
 int main() {
     int A[] = {4, 9, 1, 7, 10, 0, 6, 3, 8, 8, 2, 5};
     int n = sizeof(A)/ sizeof(A[0]);
