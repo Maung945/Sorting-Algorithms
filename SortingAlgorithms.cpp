@@ -174,8 +174,8 @@ int main() {
     //bubble_sort(A, n);
     //merge_sort(A, left, right);
     //quick_sort(A, left, right);
-    //count_sort(A, n);
-    shell_sort(A, n);
+    count_sort(A, n);
+    //shell_sort(A, n);
     display(A, n);
 
     return 0;
