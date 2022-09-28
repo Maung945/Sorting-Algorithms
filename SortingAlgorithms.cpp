@@ -1,3 +1,7 @@
+/*
+* Exploring different sorting algorithms
+* Copyright (c) 2022, Myo Aung.
+*/
 #include <iostream>
 #include <algorithm>
 
