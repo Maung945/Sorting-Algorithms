@@ -23,7 +23,7 @@ void shell_sort(int*A, int n) {
 }
 
 // Count Sort
-int findMax(int*A, int n) {
+int findMax(int*A, int n) {             // Find "largest number" in the array
     int max = -3213423;
     for(int i = 0; i < n; i++) {
         if(A[i] > max) {
@@ -35,21 +35,21 @@ int findMax(int*A, int n) {
 
 void count_sort(int*A, int n) {
     int max = findMax(A, n);
-    int *temp = new int[max+1];
-    for(int i = 0; i < max  + 1; i++) {
+    int *temp = new int[max+1];         // Create 'temp' array to accomodate all elements up to 'max'
+    for(int i = 0; i < max  + 1; i++) { // Set all elements into '0'
         temp[i] = 0;
     }
-    for(int i = 0; i < n; i++) {
+    for(int i = 0; i < n; i++) {        // For example A[i] = 5 --> temp[5] = 1; again if A[i] = 5 --> temp[i] = 2
         temp[A[i]] = temp[A[i]] + 1;
     }
     int i = 0; int j = 0;
-    while(j <= max  + 1) {
-        if(temp[j] > 0) {
-            A[i] = j;
-            temp[j] = temp[j] - 1;
-            i++;
+    while(j <= max  + 1) {              // "j" will run up to 'max + 1'
+        if(temp[j] > 0) {               
+            A[i] = j;                   // if "j" is at index 3 and "i" is at index 1, A[1] = 3, A[n] = {3, ......}
+            temp[j] = temp[j] - 1;      // Iterate until "j == 0"
+            i++;                        // "i" keeps incrementing
         }
-        else {
+        else {                          // if temp[j] == 0 -> j++
             j++;
         }
     }
