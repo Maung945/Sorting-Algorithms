@@ -85,31 +85,31 @@ void quick_sort(int*A, int left, int right) {
 
 // Merge Sort
 void merge(int* A, int left, int right, int mid) {
-    int *temp = new int[right + 1];
-    int i = left;
-    int j = mid + 1;
-    int k = left;
-    while(i <= mid && j <= right) {
-        if(A[i] < A[j]) {
-            temp[k++] = A[i++];
+    int *temp = new int[right + 1];                         // Create a temp[] array to store sorted elements
+    int i = left;                                           // i <-- left(0)
+    int j = mid + 1;                                        // j <-- mid+1
+    int k = left;                                           // k <-- left(0)
+    while(i <= mid && j <= right) {                         // Keep comparing until either one reached to the end of array
+        if(A[i] < A[j]) {                                   // Smaller element
+            temp[k++] = A[i++];                             // Copy it into temp[k++]
         }
         else {
-            temp[k++] = A[j++];
+            temp[k++] = A[j++];                             
         }
     }
 
-    if (i > mid) {
+    if (i > mid) {                                          // If left array is empty first....
         while(j <= right) {
-            temp[k++] = A[j++];
+            temp[k++] = A[j++];                             // Copy the right array into temp[k++]
         }
     }
     else {
-        while(i <= mid) {
-            temp[k++] = A[i++];
+        while(i <= mid) {                                   // If right array is empty first....
+            temp[k++] = A[i++];                             // Copy the left array into temp[k++]
         }
     }
 
-    for(k = left; k <= right; k++) {
+    for(k = left; k <= right; k++) {                         // Transfer temp[] element into A[] sorted!!
         A[k] = temp[k];
     }
     
@@ -117,10 +117,10 @@ void merge(int* A, int left, int right, int mid) {
 
 void merge_sort(int* A, int left, int right) {
     int mid = (left + right) / 2;
-    if(left < right) {
+    if(left < right) {                                      // Divide left array into smaller arrays (recursively)
         merge_sort(A, left, mid);
-        merge_sort(A, mid+1, right);
-        merge(A, left, right, mid);
+        merge_sort(A, mid+1, right);                        // Divide right array into smaller arrays (recursively)
+        merge(A, left, right, mid);                         // Then, merge the sorted array.
     }
 }
 
